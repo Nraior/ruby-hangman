@@ -15,8 +15,8 @@ class ViewController
     'There is saved game, should we load it? enter Y if yes'
   end
 
-  def self.win_message(tries, minimum_tries)
-    "Yay, you won, it only took you #{tries} tries out of #{minimum_tries} minimum"
+  def self.win_message(tries)
+    "Yay, you won, it only took you #{tries} tries"
   end
 
   def self.game_loaded_message
@@ -25,5 +25,9 @@ class ViewController
 
   def self.game_saved_message
     'Game Saved'
+  end
+
+  def self.incorrect_input_message
+    'Incorrect input'
   end
 end

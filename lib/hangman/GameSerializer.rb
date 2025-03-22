@@ -4,17 +4,25 @@ class GameSerializer
     puts 'Saving the game!'
     msg = MessagePack.dump(obj)
 
-    File.open('game.progress', 'w') do |file|
-      file << msg
+    begin
+      File.open('game.progress', 'w') do |file|
+        file << msg
+      end
+    rescue StandardError
+      puts 'Error during saving!'
     end
   end
 
   def unserialize
     obj = {}
-    File.open('game.progress') do |file|
-      obj = MessagePack.load(file)
+
+    return unless save_exists?
+
+    begin
+      MessagePack.load(File.read('game.progress'))
+    rescue StandardError
+      puts 'Error during loading'
     end
-    obj
   end
 
   def save_exists?

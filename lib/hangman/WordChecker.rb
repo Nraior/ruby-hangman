@@ -3,6 +3,10 @@ class WordChecker
     ciphered_secret_word(secret_word, already_checked_chars) == secret_word
   end
 
+  def whole_word_check(secret_word, player_word)
+    secret_word == player_word
+  end
+
   def ciphered_secret_word(secret_word, already_checked_chars)
     ciphered_secret_word = secret_word.dup
     player_used_words = already_checked_chars.tally
